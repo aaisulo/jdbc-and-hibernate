@@ -8,3 +8,6 @@
 ### Merge types
 - fast-forward-
 - with mere commit
+
+
+### Git workflow
