@@ -9,6 +9,11 @@ import java.sql.Statement;
 
 public class TestConnection {
     public static void main(String[] args) {
+
+        String className = TestConnection.class.getName();
+        System.out.println("Current class name is :" +className);
+
+
         String query = """
                 SELECT ID,NAME 
                 FROM TEST
@@ -27,6 +32,8 @@ public class TestConnection {
                 System.out.println("id: " + queryResult.getInt(1));
                 System.out.println("name: " + queryResult.getString(2));
             }
+
+
 
         } catch (SQLException exc) {
             System.out.println("got exception: " + exc);
