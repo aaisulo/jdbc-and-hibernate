@@ -1,5 +1,7 @@
 package pl.sda.orange2.entity;
-// recordy klasa
+// recordy klasa - dla klasy bez seterownikow
+
+
 
 public record Car(
         Long id,
