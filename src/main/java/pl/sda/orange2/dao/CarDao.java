@@ -4,7 +4,7 @@ import pl.sda.orange2.entity.Car;
 
 import java.util.List;
 
-public class CarDao {
+public class CarDao implements  DataAccess<Car, Long> {
     public void save(Car car){ // insert i update
 
 
