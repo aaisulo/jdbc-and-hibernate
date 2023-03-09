@@ -59,37 +59,31 @@ public class CarDao implements DataAccess<Car, Long> {
         }
         return cars;
     }
-@Override
-public Car findById(Long id) {
-    Car result = null;
-    String carByIdQuery = """
-            SELECT ID, COLOUR, BRAND, MODEL
-            FROM CARS
-            WHERE ID = ?
-            """;
-
-    try {
-        PreparedStatement queryStatement = dbConnection.prepareStatement(carByIdQuery);
-        queryStatement.setLong(1, id);
-        ResultSet queryResult = queryStatement.executeQuery();
-
-        if (queryResult.next()) {
-            result = new Car(
-                    queryResult.getLong("ID"),
-                    queryResult.getString("COLOUR"),
-                    queryResult.getString("BRAND"),
-                    queryResult.getString("MODEL")
-            );
-        }
-    } catch (SQLException e) {
-        System.out.println("Unexpected sql exception occurred");
-        e.printStackTrace();
-    }
-    return result;
-}
 
     @Override
-    public void deleteById(Long aLong) {
+    public Car findById(Long aLong) throws SQLException {
+        return null;
+    }
 
+    @Override
+    public void deleteById(Long id) {
+        String carByIdQuery = """
+                DELETE
+                FROM CARS
+                WHERE ID = ?
+                """;
+
+        try {
+            PreparedStatement queryStatement = dbConnection.prepareStatement(carByIdQuery);
+            queryStatement.setLong(1, id);
+           int numberOfTouchedRecords = queryStatement.executeUpdate();
+            System.out.println("Number of touche drecords: \n" + numberOfTouchedRecords);
+
+
+        } catch (SQLException e) {
+            System.out.println("Unexpected sql exception occurred");
+            e.printStackTrace();
+        }
     }
 }
+
