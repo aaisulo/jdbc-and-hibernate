@@ -1,5 +1,6 @@
 package pl.sda.orange2.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface DataAccess<E, ID> {
@@ -7,7 +8,7 @@ public interface DataAccess<E, ID> {
 
     List<E> findAll();
 
-    E findById(ID id);
+    E findById(ID id) throws SQLException;
 
     void deleteById(ID id);
 }
